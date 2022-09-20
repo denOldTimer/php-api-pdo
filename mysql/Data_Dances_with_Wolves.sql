@@ -1,0 +1,1 @@
+INSERT INTO `movies` (`id`, `title`, `storyline`, `lang`, `genre`, `release_date`, `box_office`, `runtime`, `stars`) VALUES (NULL, 'Dances with Wolves', 'Dances with Wolves is a 1990 American epic Western film starring, directed, and produced by Kevin Costner in his feature directorial debut.', 'English', 'Western', '1990', '424', '3h56m', '8');

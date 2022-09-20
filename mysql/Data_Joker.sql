@@ -1,0 +1,1 @@
+INSERT INTO `movies` (`id`, `title`, `storyline`, `lang`, `genre`, `release_date`, `box_office`, `runtime`, `stars`) VALUES (NULL, 'Joker', 'Set in 1981, it follows Arthur Fleck, a failed clown and aspiring stand-up comedian whose descent into insanity and nihilism inspires a violent countercultural ...', 'English', 'Thriller', '2019', '1074000000', '2h2m', '8.4');
