@@ -30,7 +30,27 @@ class Model extends Database
    * - Delete
    */
 
+  /** The CreateById Method
+   * 
+   * 
+   */
+  public function createById($query, $args)
+  {
+    $dB = self::getdb();
 
+    if ($query && $args) {
+      $stmt = $dB->prepare($query);
+      foreach ($args as $key => $value) {
+        $stmt->bindValue("$key", $value);
+      }
+      $count = $stmt->execute();
+      //$id = $dB->lastInsertId();
+
+      return $count;
+    } else {
+      echo ('ERROR: createById - empty query and nor parameters');
+    }
+  }
 
 
 
@@ -70,7 +90,7 @@ class Model extends Database
 
       return $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
-      echo ('ERROR: readById - empty query and nor id');
+      echo ('ERROR: readById - empty query and nor parameters');
     }
   }
 
@@ -93,38 +113,52 @@ class Model extends Database
       $stmt->execute();
       return $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
-      echo ('ERROR: readByTitle - empty query and nor title');
+      echo ('ERROR: readByTitle - empty query and nor parameters');
+    }
+  }
+
+
+  /** The UpdateById Method
+   * 
+   * 
+   */
+  public function updateById($query, $params)
+  {
+    $dB = self::getdb();
+
+    if ($query && $params) {
+      $stmt = $dB->prepare($query);
+      foreach ($params as $key => $value) {
+        $stmt->bindValue("$key", $value);
+      }
+      $count = $stmt->execute();
+
+      return $count;
+    } else {
+      echo ('ERROR: updateById - empty query and nor parameters');
     }
   }
 
 
 
-
-
-
-
-
-
   /** The DeleteById Method
    * 
-   * @param string $query A SQL string statement
-   * @param array $args Parameters to bind
-   * @return ASSOC MIXED ARRAY
+   * 
    */
-  public function deleteById($query, $args)
+  public function deleteById($query, $params)
   {
     $dB = self::getdb();
 
-    if ($query && $args) {
+    if ($query && $params) {
       $stmt = $dB->prepare($query);
-      foreach ($args as $key => $value) {
+      foreach ($params as $key => $value) {
         $stmt->bindValue("$key", $value);
       }
       $stmt->execute();
 
-      return $stmt->fetch(PDO::FETCH_ASSOC);
+      return true;
     } else {
-      echo ('ERROR: readById - empty query and nor id');
+      echo ('ERROR: deleteById - empty query and nor parameters');
     }
   }
 } //END-CLASS

@@ -6,6 +6,9 @@ use Model\mMovie;
 // The movie was provided through GET request
 if (isset($_POST['id']) && isset($_POST['title'])) {
 
+
+
+
   $id = $_POST['id'];
   $title = $_POST['title'];
   $storyline = $_POST['storyline'];
@@ -16,12 +19,25 @@ if (isset($_POST['id']) && isset($_POST['title'])) {
   $runtime = $_POST['runtime'];
   $stars = $_POST['stars'];
 
+  $movie = array(
+    ":id" => $id,
+    ":title" => $title,
+    ":storyline" => $storyline,
+    ":lang" => $lang,
+    ":genre" => $genre,
+    ":release_date" => $release_date,
+    ":box_office" => $box_office,
+    ":runtime" => $runtime,
+    ":stars" => $stars
+  );
+
+
 
   include_once("init.php");
 
   $movies = new mMovie;
 
-  $allMovies = $movies->updateMovieById($id);
+  $allMovies = $movies->movieUpdateById($id, $movie);
 
   //var_dump($allMovies);
 

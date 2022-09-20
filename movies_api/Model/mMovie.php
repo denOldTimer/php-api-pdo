@@ -40,14 +40,12 @@ class mMovie extends Model
   }
 
   // U - UPDATE
-  public function movieUpdateById($id)
+  public function movieUpdateById($args = array())
   {
 
-    $query = "SELECT * FROM `movies` WHERE `id` = :id ";
-    $args = array(
-      ":id" => $id
-    );
-    return self::readById($query, $args);
+    $query = "UPDATE `movies` SET `title` = :title , `storyline` = :storyline , `lang` = :lang , `genre` = :genre , `release_date` = :release_date , `box_office` = :box_office , `runtime` = :runtime , `stars` = :stars WHERE `id` = :id ";
+
+    return self::updateById($query, $args);
   }
 
 
