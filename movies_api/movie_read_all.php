@@ -17,10 +17,12 @@ if ($allMovies) {
   $response['error'] = false;
   $response['movies'] = $allMovies;
   $response['message'] = "movies returned successfully";
+  $response['response_code'] = 200;
 } else {
   // There was an error
   $response['error'] = true;
   $response['message'] = "Could not execute query";
+  $response['response_code'] = 400;
 }
 
 

@@ -30,16 +30,19 @@ if (isset($_POST['title'])) {
     //Successfully  
     $response['error'] = false;
     $response['message'] = "The Movie created successfully";
+    $response['response_code'] = 201;
   } else {
     // There was an error
     $response['error'] = true;
     $response['message'] = "Failed to create the movie";
+    $response['response_code'] = 400;
   }
 } else {
 
   // No movie title was provided, we cannot get the movie
   $response['error'] = true;
   $response['message'] = "Please provide a title?";
+  $response['response_code'] = 400;
 }
 
 // Display Results

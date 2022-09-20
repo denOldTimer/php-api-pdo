@@ -31,16 +31,19 @@ if (isset($_POST['id']) && isset($_POST['title'])) {
     //Successfully  
     $response['error'] = false;
     $response['message'] = "The Movie has been updated successfully";
+    $response['response_code'] = 200;
   } else {
     // There was an error
     $response['error'] = true;
     $response['message'] = "Failed to update movie";
+    $response['response_code'] = 400;
   }
 } else {
 
   // No movie title was provided, we cannot get the movie
   $response['error'] = true;
   $response['message'] = "Please provide a exact movie id and or title?";
+  $response['response_code'] = 400;
 }
 
 // Display Results

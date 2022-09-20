@@ -19,3 +19,32 @@ I'm the ["denOldTimer"](https://github.com/denOldTimer) from [ScropioCoding.com]
 I started this course to learn more about API without the complexities of say Laravel or Symphony.  
 Also I'm in the middle of creating my new personal website and I want to do it with my small PHP-API back-end and ReactJs front-end, which is my next challenge.   
 If any questions just let me know via github.
+
+
+## HOW TO USE
+
+1. The rules of docker-compose
+
+2. localhost -> runs the index.php
+
+3. localhost:81 -> runs phpmyadmin 
+      server => db
+      user => root
+      passw => r00tadmin
+
+      Import sql scripts from the mysql folder
+
+4. Run the varia of tests
+
+
+
+## RESPONSE CODES
+200 (ok)
+201 (created)
+204 (no content)
+301 (moved permanently)
+400 (bad request)
+401 (unauthorized)
+404 (not found)
+500 (internal server error)
+
