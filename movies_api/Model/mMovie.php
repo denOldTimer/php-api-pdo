@@ -30,7 +30,7 @@ class mMovie extends Model
 
     $query = "SELECT * FROM `movies` WHERE `id` = :id ";
     $params = array(
-      ":id" => $id
+      "id" => $id
     );
     return self::readById($query, $params);
   }
@@ -39,7 +39,7 @@ class mMovie extends Model
   {
     $query = "SELECT * FROM `movies` WHERE `title` = :title ";
     $params = array(
-      ":title" => $title
+      "title" => $title
     );
     return self::readByTitle($query, $params);
   }
@@ -61,10 +61,12 @@ class mMovie extends Model
   // D - DELETE
   public function movieDeleteById($id)
   {
+    // TODO CReate a ID check
+    $id ? true : false;
 
-    $query = "DELETE FROM `movies` WHERE `id` = :id ";
+    $query = "DELETE FROM `movies` WHERE `id`=:id LIMIT 1 ";
     $params = array(
-      ":id" => $id
+      "id" => $id
     );
     return self::deleteById($query, $params);
   }
