@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
 
   $movies = new mMovie;
 
-  $allMovies = $movies->getMovieById($id);
+  $allMovies = $movies->movieReadById($id);
 
   //var_dump($allMovies);
 

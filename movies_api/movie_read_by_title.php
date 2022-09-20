@@ -12,7 +12,7 @@ if (isset($_GET['title'])) {
 
   $movies = new mMovie;
 
-  $allMovies = $movies->getMovieByTitle($title);
+  $allMovies = $movies->movieReadByTitle($title);
 
   //var_dump($allMovies);
 

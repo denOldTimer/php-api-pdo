@@ -7,7 +7,7 @@ include_once("init.php");
 
 $movies = new mMovie;
 
-$allMovies = $movies->getMovieAll();
+$allMovies = $movies->movieReadAll();
 
 //var_dump($allMovies);
 
