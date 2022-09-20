@@ -4,11 +4,9 @@ header('Content-Type: application/json');
 use Model\mMovie;
 
 // The movie was provided through GET request
-if (isset($_POST['id']) && isset($_POST['title'])) {
-
+if (isset($_POST['title'])) {
 
   $movie = array();
-  $movie["id"] = $_POST['id'];
   $movie["title"] = $_POST['title'];
   $movie["storyline"] = $_POST['storyline'];
   $movie["lang"] = $_POST['lang'];
@@ -18,11 +16,12 @@ if (isset($_POST['id']) && isset($_POST['title'])) {
   $movie["runtime"] = $_POST['runtime'];
   $movie["stars"] =  $_POST['stars'];
 
+
   include_once("init.php");
 
   $movies = new mMovie;
 
-  $allMovies = $movies->movieUpdateById($_POST['id'], $movie);
+  $allMovies = $movies->movieCreateByTitle($movie);
 
   //var_dump($allMovies);
 
@@ -30,17 +29,17 @@ if (isset($_POST['id']) && isset($_POST['title'])) {
   if ($allMovies == "true") {
     //Successfully  
     $response['error'] = false;
-    $response['message'] = "The Movie has been updated successfully";
+    $response['message'] = "The Movie created successfully";
   } else {
     // There was an error
     $response['error'] = true;
-    $response['message'] = "Failed to update movie";
+    $response['message'] = "Failed to create the movie";
   }
 } else {
 
   // No movie title was provided, we cannot get the movie
   $response['error'] = true;
-  $response['message'] = "Please provide a exact movie id and or title?";
+  $response['message'] = "Please provide a title?";
 }
 
 // Display Results

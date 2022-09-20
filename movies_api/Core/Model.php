@@ -34,7 +34,7 @@ class Model extends Database
    * 
    * 
    */
-  public function createById($query, $args)
+  public function createByTitle($query, $args)
   {
     $dB = self::getdb();
 
@@ -43,10 +43,10 @@ class Model extends Database
       foreach ($args as $key => $value) {
         $stmt->bindValue("$key", $value);
       }
-      $count = $stmt->execute();
+      $stmt->execute() ? $res = "true" : $res = "false";
       //$id = $dB->lastInsertId();
 
-      return $count;
+      return $res;
     } else {
       echo ('ERROR: createById - empty query and nor parameters');
     }
@@ -131,9 +131,9 @@ class Model extends Database
       foreach ($params as $key => $value) {
         $stmt->bindValue("$key", $value);
       }
-      $count = $stmt->execute();
+      $stmt->execute() ? $res = "true" : $res = "false";
 
-      return $count;
+      return $res;
     } else {
       echo ('ERROR: updateById - empty query and nor parameters');
     }
@@ -154,9 +154,9 @@ class Model extends Database
       foreach ($params as $key => $value) {
         $stmt->bindValue("$key", $value);
       }
-      $stmt->execute();
+      $stmt->execute() ? $res = "true" : $res = "false";
 
-      return true;
+      return $res;
     } else {
       echo ('ERROR: deleteById - empty query and nor parameters');
     }
