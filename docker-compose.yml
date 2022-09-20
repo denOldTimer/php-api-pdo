@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    image: moviesapi
+    #container_name: app
+    restart: unless-stopped
+    volumes:
+      - ./movies_api:/var/www
+
+  webserver:
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
+    image: nginx
+    #container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./movies_api:/var/www
+      - ./config/nginx/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db
+    links:
+      - app
+      - db
+      - phpmyadmin
+
+  db:
+    platform: linux/x86_64
+    image: mysql:8
+    #image: mysql:5.7.22
+    #container_name: db
+    #environment:
+    #   MYSQL_SERVER: db
+    #   MYSQL_DATABASE: moviesapi
+    #   MYSQL_ROOT_PASSWORD: r00tadmin
+    env_file:
+      - ./env/db.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - ./env/phpmyadmin.env
+    ports:
+      - 81:80
+
+volumes:
+  dbdata:
+    driver: local
