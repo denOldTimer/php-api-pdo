@@ -9,6 +9,11 @@ use Core\Model as Model;
 class mMovie extends Model
 {
 
+  // C - CREATE
+
+
+  // R - READ
+
   public function getMovieAll()
   {
     $query = "SELECT * FROM `movies`";
@@ -32,5 +37,22 @@ class mMovie extends Model
       ":title" => $title
     );
     return self::readByTitle($query, $args);
+  }
+
+  // U - UPDATE
+
+
+
+
+
+  // D - DELETE
+  public function delMovieById($id)
+  {
+
+    $query = "DELETE FROM `movies` WHERE `id` = :id ";
+    $args = array(
+      ":id" => $id
+    );
+    return self::deleteById($query, $args);
   }
 }

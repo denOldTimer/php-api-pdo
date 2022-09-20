@@ -75,7 +75,7 @@ class Model extends Database
   }
 
 
-  /** The ReadById Method
+  /** The ReadByTitle Method
    * 
    * @param string $query A SQL string statement
    * @param array $args Parameters to bind
@@ -94,6 +94,37 @@ class Model extends Database
       return $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
       echo ('ERROR: readByTitle - empty query and nor title');
+    }
+  }
+
+
+
+
+
+
+
+
+
+  /** The DeleteById Method
+   * 
+   * @param string $query A SQL string statement
+   * @param array $args Parameters to bind
+   * @return ASSOC MIXED ARRAY
+   */
+  public function deleteById($query, $args)
+  {
+    $dB = self::getdb();
+
+    if ($query && $args) {
+      $stmt = $dB->prepare($query);
+      foreach ($args as $key => $value) {
+        $stmt->bindValue("$key", $value);
+      }
+      $stmt->execute();
+
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    } else {
+      echo ('ERROR: readById - empty query and nor id');
     }
   }
 } //END-CLASS
