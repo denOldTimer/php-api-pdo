@@ -51,39 +51,33 @@ If any questions just let me know via github.
 
 ## DOCUMENTATION
 
-1. Get All Movies
+1. Get All Movies    
+/movie_read_all.php   
+Request-type: GET   
+Expected Response format -> json_encode   
 ---
-/movie_read_all.php
-Request-type: GET
-Expected Response format -> json_encode
-
-2. Get Movie by Id
+2. Get Movie by Id  
+/movie_read_by_id.php?id=5   
+Request-type: GET   
+Expected Response format -> json_encode   
 ---
-/movie_read_by_id.php?id=5
-Request-type: GET
-Expected Response format -> json_encode
-
-3. Get Movie by Title
+3. Get Movie by Title  
+/movie_read_by_tile.php?title=Joker   
+Request-type: GET   
+Expected Response format -> json_encode   
 ---
-/movie_read_by_tile.php?title=Joker
-Request-type: GET
-Expected Response format -> json_encode
-
-4. Create Movie By Title
+4. Create Movie By Title   
+/movie_create_by_title.php   
+Request-type: POST   
+Required-parameters: title   
 ---
-/movie_create_by_title.php
-Request-type: POST
-Required-parameters: title
-
-5. Update Movie By Id
+5. Update Movie By Id   
+/movie_update_by_id.php    
+Request-type: POST   
+Required-parameters: id,title   
 ---
-/movie_update_by_id.php
-Request-type: POST
-Required-parameters: id,title
-
-6. Delete Movie By Id
+6. Delete Movie By Id   
+/movie_delete_by_id.php   
+Request-type: POST   
+Required-parameters: id   
 ---
-/movie_delete_by_id.php
-Request-type: POST
-Required-parameters: id
-
